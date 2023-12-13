@@ -1,0 +1,14 @@
+version: "3"
+
+tasks:
+  build:
+    desc: "Build node modules"
+    cmds:
+      - cd api && npm i
+      - cd web && npm i
+
+  up:
+    desc: "Start the app"
+    cmds:
+      - cd api && npm run dev
+      - cd web && npm start

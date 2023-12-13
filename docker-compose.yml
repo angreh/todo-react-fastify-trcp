@@ -1,0 +1,20 @@
+version: "3"
+
+services:
+  db:
+    image: mysql:5.7
+    container_name: rtf-mysql
+    volumes:
+      - ./mysql/:/var/lib/mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: my_db
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
+    healthcheck:
+      test: ["CMD", "mysqladmin", "--password=root", "ping", "-h", "localhost"]
+      interval: 2s
+      timeout: 20s
+      retries: 10
